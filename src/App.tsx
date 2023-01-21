@@ -1,13 +1,5 @@
-import { Habit } from "./components";
+import { HomeTemplate } from "./components";
 
-const App = () => {
-  return (
-    <>
-      <Habit completed={10} />
-      <Habit completed={50} />
-      <Habit completed={100} />
-    </>
-  );
+export default () => {
+  return <HomeTemplate />;
 };
-
-export default App;
