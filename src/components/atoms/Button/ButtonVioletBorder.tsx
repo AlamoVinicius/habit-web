@@ -7,22 +7,14 @@ interface ButtonVioletBorder extends HtmlHTMLAttributes<HTMLButtonElement> {
   loading?: boolean;
 }
 
-export const ButtonVioletBorder = ({
-  icon,
-  loading,
-  children,
-}: ButtonVioletBorder) => (
+export const ButtonVioletBorder = ({ icon, loading, children, ...rest }: ButtonVioletBorder) => (
   <button
     type="button"
-    className="border border-violet-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-violet-300 bg-black"
+    className="border border-violet-500 font-semibold rounded-lg px-6 py-4 flex items-center gap-3 hover:border-violet-300 bg-black text-white"
+    {...rest}
   >
     {icon && icon}
     {children}
-    {loading && (
-      <CircleNotch
-        size={22}
-        className="motion-safe:animate-spin text-violet-500"
-      />
-    )}
+    {loading && <CircleNotch size={22} className="motion-safe:animate-spin text-violet-500" />}
   </button>
 );
