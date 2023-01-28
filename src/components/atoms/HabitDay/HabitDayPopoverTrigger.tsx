@@ -3,12 +3,13 @@ import clsx from "clsx";
 import { ContentPopverHabit } from "../../molecules";
 
 interface HabitDayProps {
-  completed: number;
-  amount: number;
+  completed?: number;
+  amount?: number;
+  date: Date;
 }
 
-export const HabitDayPopoverTrigger = ({ amount, completed }: HabitDayProps) => {
-  const completePercentage = Math.round((completed / amount) * 100);
+export const HabitDayPopoverTrigger = ({ amount = 0, completed = 0, date }: HabitDayProps) => {
+  const completePercentage = amount > 0 ? Math.round((completed / amount) * 100) : 0;
 
   return (
     <Popover.Root>
@@ -24,7 +25,7 @@ export const HabitDayPopoverTrigger = ({ amount, completed }: HabitDayProps) => 
       />
       <Popover.Portal>
         <Popover.Content className="min-w-[320px] p-6 rounded-2xl bg-zinc-900 flex flex-col">
-          <ContentPopverHabit completePercentage={completePercentage} />
+          <ContentPopverHabit completePercentage={completePercentage} date={date} />
           <Popover.Arrow height={8} width={16} className="fill-zinc-900" />
         </Popover.Content>
       </Popover.Portal>
